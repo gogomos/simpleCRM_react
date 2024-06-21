@@ -1,53 +1,53 @@
 const products = [
   {
     id: 1,
-    name: "Blender",
+    name: "Laptop",
     price: 1200,
   },
   {
     id: 2,
-    name: "Toaster",
-    price: 600,
+    name: "Smartphone",
+    price: 800,
   },
   {
     id: 3,
-    name: "Microwave Oven",
-    price: 2000,
+    name: "Tablet",
+    price: 600,
   },
   {
     id: 4,
-    name: "Coffee Maker",
-    price: 850,
-  },
-  {
-    id: 5,
-    name: "Air Fryer",
+    name: "Smart TV",
     price: 1500,
   },
   {
+    id: 5,
+    name: "Gaming Console",
+    price: 400,
+  },
+  {
     id: 6,
-    name: "Stand Mixer",
-    price: 3000,
+    name: "Wireless Headphones",
+    price: 250,
   },
   {
     id: 7,
-    name: "Pressure Cooker",
-    price: 1300,
+    name: "Fitness Tracker",
+    price: 150,
   },
   {
     id: 8,
-    name: "Food Processor",
-    price: 1750,
+    name: "Bluetooth Speaker",
+    price: 100,
   },
   {
     id: 9,
-    name: "Rice Cooker",
-    price: 950,
+    name: "External Hard Drive",
+    price: 120,
   },
   {
     id: 10,
-    name: "Electric Kettle",
-    price: 400,
+    name: "Portable Printer",
+    price: 300,
   },
 ];
 
