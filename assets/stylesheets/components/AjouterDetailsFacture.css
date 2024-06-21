@@ -1,0 +1,9 @@
+#toAddClient{
+    font-weight: bold;
+}
+input#idFacture{
+    align-items: start;
+}
+.input-left-align {
+    text-align: start !important;
+}
