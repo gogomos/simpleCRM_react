@@ -6,7 +6,6 @@ class FactureList extends Component {
     super(props);
     this.state = {
       showModal: false,
-      factures: JSON.parse(localStorage.getItem('factures')) || [],
       selectedFacture: null,
     };
   }
@@ -23,11 +22,10 @@ class FactureList extends Component {
               <th className="text-left">Montant H.T</th>
               <th className="Remise text-left">TVA</th>
               <th className="text-left">Montant TTC</th>
-           
             </tr>
           </thead>
           <tbody className="table-hover">
-            {this.state.factures.map((facture, index) => {
+            {this.props.factures.map((facture, index) => {
               const totalHT = facture.articles.reduce((acc, article) => acc + article.totalPrice, 0);
               const totalTVA = totalHT * 20 / 100;
               const totalTTC = totalHT + totalTVA;

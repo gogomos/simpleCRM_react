@@ -1,5 +1,4 @@
-import React, { Component } from 'react';
-// import ArticleItem from './ArticleItem';
+import React, { Component } from "react";
 import ArticleItem from './ArticteItem';
 
 class ArticleList extends Component {
@@ -9,6 +8,13 @@ class ArticleList extends Component {
       articleList: JSON.parse(localStorage.getItem('articlesItemes')) || [],
       count: JSON.parse(localStorage.getItem('articlesItemes'))?.length || 0,
     };
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.clearTableTrigger !== this.props.clearTableTrigger) {
+      this.setState({ articleList: [], count: 0 });
+      localStorage.removeItem('articlesItemes');
+    }
   }
 
   handleAjouterArticle = () => {
@@ -68,7 +74,7 @@ class ArticleList extends Component {
               <th className="text-left"></th>
             </tr>
           </thead>
-          <tbody className="table-hover" >
+          <tbody className="table-hover">
             {this.state.articleList.map((article) => (
               <ArticleItem
                 key={article.id}
@@ -85,3 +91,4 @@ class ArticleList extends Component {
 }
 
 export default ArticleList;
+

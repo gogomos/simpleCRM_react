@@ -19,6 +19,16 @@ class AjouterDetailsFacture extends Component {
     this.setState({ clients });
   }
 
+  componentDidUpdate(prevProps) {
+    if (prevProps.clearFormTrigger !== this.props.clearFormTrigger) {
+      this.setState({
+        idFacture: '',
+        dateFacture: '',
+        selectedClient: ''
+      });
+    }
+  }
+
   handleSelectChange = (event) => {
     if (event.target.value === '3') {
       this.setState({ showAjouterClient: true });
@@ -46,6 +56,7 @@ class AjouterDetailsFacture extends Component {
     }
 
     const factureDetails = { id: idFacture, date: dateFacture, client: selectedClient };
+    alert("Facture Details ajoutée avec succès !");
     localStorage.setItem('factureDetails', JSON.stringify(factureDetails));
   }
 
@@ -59,6 +70,7 @@ class AjouterDetailsFacture extends Component {
               type="text"
               className="form-control"
               id="idFacture"
+              value={this.state.idFacture}
               onChange={this.handleInputChange}
             />
           </div>
@@ -68,6 +80,7 @@ class AjouterDetailsFacture extends Component {
               type="date"
               className="form-control"
               id="dateFacture"
+              value={this.state.dateFacture}
               onChange={this.handleInputChange}
             />
           </div>
@@ -78,6 +91,7 @@ class AjouterDetailsFacture extends Component {
               className="form-select"
               aria-label="Default select example"
               onChange={this.handleSelectChange}
+              value={this.state.selectedClient}
             >
               <option value="">Open this select menu</option>
               {this.state.clients.map((client, index) => (

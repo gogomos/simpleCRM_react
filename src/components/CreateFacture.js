@@ -14,17 +14,23 @@ class CreateFacture extends Component {
     }
 
     const factures = JSON.parse(localStorage.getItem('factures')) || [];
-    factures.push({ ...factureDetails, articles });
-    localStorage.setItem('factures', JSON.stringify(factures));
+    const newFactures = [...factures, { ...factureDetails, articles }];
+    localStorage.setItem('factures', JSON.stringify(newFactures));
+    localStorage.removeItem('factureDetails');
+    localStorage.removeItem('articlesItemes');
+
+    this.props.updateFactures(newFactures);
 
     alert("Facture ajoutée avec succès !");
+    this.props.clearForm();
+    this.props.clearTable();
   }
 
   render() {
     return (
       <div>
-        <AjouterDetailsFacture />
-        <ArticleList />
+        <AjouterDetailsFacture clearFormTrigger={this.props.clearFormTrigger} />
+        <ArticleList clearTableTrigger={this.props.clearTableTrigger} />
         <div className="col-auto d-flex justify-content-end mb-3">
           <button
             type="button"
