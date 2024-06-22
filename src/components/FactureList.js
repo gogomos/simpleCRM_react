@@ -10,6 +10,20 @@ class FactureList extends Component {
     };
   }
 
+  handleShowDetails = (facture) => {
+    this.setState({
+      showModal: true,
+      selectedFacture: facture,
+    });
+  }
+
+  closeModal = () => {
+    this.setState({
+      showModal: false,
+      selectedFacture: null,
+    });
+  }
+
   render() {
     return (
       <div className='mt-5'>
@@ -22,6 +36,7 @@ class FactureList extends Component {
               <th className="text-left">Montant H.T</th>
               <th className="Remise text-left">TVA</th>
               <th className="text-left">Montant TTC</th>
+              <th className="text-left">Actions</th>
             </tr>
           </thead>
           <tbody className="table-hover">
@@ -37,12 +52,26 @@ class FactureList extends Component {
                   <td className="text-left">$ {totalHT.toFixed(2)}</td>
                   <td className="text-left">20 %</td>
                   <td className="text-left">$ {totalTTC.toFixed(2)}</td>
+                  <td className="text-left">
+                    <button
+                      type="button"
+                      className="btn btn-primary"
+                      onClick={() => this.handleShowDetails(facture)}
+                    >
+                      Details
+                    </button>
+                  </td>
                 </tr>
               );
             })}
           </tbody>
         </table>
-        {this.state.showModal && <DetailsFacture facture={this.state.selectedFacture} closeModal={this.closeModal} />}
+        {this.state.showModal && (
+          <DetailsFacture
+            facture={this.state.selectedFacture}
+            closeModal={this.closeModal}
+          />
+        )}
       </div>
     );
   }
